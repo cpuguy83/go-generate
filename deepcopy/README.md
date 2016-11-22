@@ -28,6 +28,7 @@ import (
 	"fmt"
 	"go/format"
 	"os"
+	"time"
 
 	"github.com/cpuguy83/go-generate/deepcopy"
 )
@@ -68,6 +69,8 @@ func (o *Foo) Copy() *Foo {
 		}
 
 	}
+
+	oCopy.D = o.D
 
 	return &oCopy
 }
