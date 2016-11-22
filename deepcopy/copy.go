@@ -142,6 +142,10 @@ func Generate(ref string, o interface{}, ignorePkgErrs []interface{}) (importsBu
 			// TODO(cpuguy83): Why doesn't this work properly in Next()?
 			for i := 0; i < t.NumField(); i++ {
 				field := t.Field(i)
+				if dcTagVal, ok := field.Tag.Lookup("deepcopy"); ok && dcTagVal == "skip" {
+					continue
+				}
+
 				next := &reflectType{
 					parent:     t,
 					Type:       field.Type,

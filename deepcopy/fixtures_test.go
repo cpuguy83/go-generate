@@ -580,3 +580,23 @@ func (o structWithDeepCopy) Copy() structWithDeepCopy {
 type structWithChannel struct {
 	c chan struct{}
 }
+
+type structWithSkip struct {
+	A map[string]string `deepcopy:"skip"`
+	B []string
+}
+
+var structWithSkipX = []byte(`
+func (o structWithSkip) Copy() structWithSkip {
+	oCopy := o
+	if o.B != nil {
+		oCopy.B = make([]string, len(o.B))
+		for i0, v0 := range o.B {
+			oCopy.B[i0] = v0
+		}
+
+	}
+
+	return oCopy
+}
+`)

@@ -79,4 +79,3 @@ func (o *Foo) Copy() *Foo {
 
 ### TODO
 
-- Support struct tag parsing to ignore fields in a struct

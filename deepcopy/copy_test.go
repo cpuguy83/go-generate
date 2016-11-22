@@ -44,6 +44,7 @@ func TestGenerate(t *testing.T) {
 		{"A struct with an imported struct in a slice that needs an import statement", structWithImportNeededSlice{}, structWithImportNeededSliceX, nil, nil},
 		{"A struct that uses an imported custom slice type", structWithImportedCustomSliceType{}, structWithImportedCustomSliceTypeX, nil, nil},
 		{"A struct type with a channel", structWithChannel{}, nil, ErrUnsupportedType, nil},
+		{"A struct with a skipped field", structWithSkip{}, structWithSkipX, nil, nil},
 	}
 
 	for _, c := range cases {
